@@ -1,6 +1,6 @@
 @if(count($errors))
 
-<div class="col-sm-6 offset-sm-2">
+<div class="col-sm-8">
 	<div class="card">
 		<div class="alert alert-danger">
 			<ul class="list-group">

@@ -14,8 +14,20 @@ class PostsController extends Controller
 
     public function dashboard() {
 
-    	return view('users.dashboard');
+    	return view('user.dashboard');
 
+    }
+
+    public function create() {
+
+    	return view('user.post.create');
+
+    }
+
+    public function store() {
+
+    	
+    	
     }
 
 

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('guest.partials.layout')
 
 @section('content')
 
@@ -24,7 +24,6 @@
 			      </div>
 			    </div>
 		  </form>
-		  @include('parts/errors')
 	</div>
 
 @endsection

@@ -1,4 +1,4 @@
-@extends('layout') 
+@extends('guest.partials.layout') 
 
 @section('content')
 
@@ -142,9 +142,5 @@
         </div>
       </div>
     </section>
-
-    @include('parts.footerLayout')
-
-
 
 @endsection

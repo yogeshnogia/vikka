@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+/*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -10123,6 +10123,3 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
-.user_nav_btn{
-  right: 50px;
-}

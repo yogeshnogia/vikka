@@ -15,7 +15,7 @@ class SessionsController extends Controller
 
 
     public function create(){
-    	return view('sessions.login');
+    	return view('guest.sessions.login');
     }
 
     public function store() {
