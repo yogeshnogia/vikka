@@ -143,6 +143,8 @@
       </div>
     </section>
 
+    @include('parts.footerLayout')
+
 
 
 @endsection
