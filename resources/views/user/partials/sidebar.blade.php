@@ -30,6 +30,12 @@
                             <p>Posts Add</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="/posts/listings">
+                            <i class="material-icons">content_paste</i>
+                            <p>View all the listing</p> 
+                        </a>
+                    </li>
                     {{-- <li>
                         <a href="./typography.html">
                             <i class="material-icons">library_books</i>

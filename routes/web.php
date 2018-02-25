@@ -25,3 +25,6 @@ Route::get('/logout', 'SessionsController@destroy');
 Route::get('/dashboard', 'PostsController@dashboard');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts/create', 'PostsController@store');
+
+Route::get('/posts/listings', 'PostsController@listings');
+Route::get('/posts/listings/{listing}', 'PostsController@listing');
