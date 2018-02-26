@@ -13,27 +13,8 @@
                                     <p class="category">Complete your profile</p>
                                 </div>
                                 <div class="card-content">
-                                    <form method="POST" action="/create">
-                                        {{-- <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Company (disabled)</label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Username</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Email address</label>
-                                                    <input type="email" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div> --}}
+                                    <form method="POST" action="/posts/listings">
+                                       {{ csrf_field() }}
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">

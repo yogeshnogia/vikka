@@ -23,6 +23,7 @@
 							        <th>Country</th>
 							        <th>Postal</th>
 							        <th>Body</th>
+							        <th>Created At</th>
 							      </tr>
 							    </thead>
 							    <tbody>
@@ -36,12 +37,15 @@
 						        	<td> {{ $listing->country }} </td>
 						        	<td> {{ $listing->postal }} </td>
 						        	<td> {{ $listing->body }} </td>
+						        	<td> {{ $listing->created_at->toDayDateTimeString() }} </td>
+						        	{{-- <td>{{ $listing->created_at->setTimezone(Auth::user()->timezone)->toDayDateTimeString() }}</td> --}}
 							      </tr>
 							      @endforeach
 							    </tbody>
 							  </table>
 	                    </div>
 	                </div>
+	                @include('guest.partials.errors')
 	            </div>
 	        </div>
 	    </div>

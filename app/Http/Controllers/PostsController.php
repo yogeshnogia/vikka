@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use \App\Post;
 
 class PostsController extends Controller
 {
@@ -27,6 +27,15 @@ class PostsController extends Controller
 
     public function store() {
 
+        
+        //dd(request()->all());
+        //1. Save it to the database
+        Post::create(request(['company', 'model', 'address', 'city', 'country', 'postal', 'body']));
+        //here we used Post and created a new post using query builder
+
+
+        //2. Redirect
+        return redirect('/posts/listings');
     	
     	
     }
@@ -34,7 +43,9 @@ class PostsController extends Controller
     public function listings() {
         $i = 1;
 
-        $listings = \DB::table('posts')->latest()->get();
+        //$listings = \DB::table('posts')->latest()->get();
+        $listings = Post::latest()->get();
+        
 
         return view('user.post.listings', compact(['listings', 'i']));
         //return $listings;
@@ -42,9 +53,10 @@ class PostsController extends Controller
     }
 
 
-    public function listing($id) {
+    public function listing(Post $listing) {        // Post::find(wildcard for you)
 
-        $listing = \DB::table('posts')->find($id);
+        //$listing = Post::find($id);
+        //$listing = \DB::table('posts')->find($id);
         //dd($id);
         return view('user.post.unique', compact('listing'));
 

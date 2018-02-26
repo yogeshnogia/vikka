@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'StaticController@index')->name('home');
+Route::get('/time', 'StaticController@time');
 
 
 Route::get('/register', 'RegistrationController@create');
@@ -24,7 +25,7 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/dashboard', 'PostsController@dashboard');
 Route::get('/posts/create', 'PostsController@create');
-Route::post('/posts/create', 'PostsController@store');
+Route::post('/posts/listings', 'PostsController@store');
 
 Route::get('/posts/listings', 'PostsController@listings');
 Route::get('/posts/listings/{listing}', 'PostsController@listing');
