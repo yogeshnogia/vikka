@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Post;
+use App\Post;
+use App\Comment;
 
 class PostsController extends Controller
 {
@@ -55,9 +56,10 @@ class PostsController extends Controller
 
     public function listing(Post $listing) {        // Post::find(wildcard for you)
 
-        //$listing = Post::find($id);
+        //$listing = Post::findorfail($id);     // use it when you want to show 404 error.
         //$listing = \DB::table('posts')->find($id);
         //dd($id);
+        // $post = Post::with("comment")->find($listing);
         return view('user.post.unique', compact('listing'));
 
     }

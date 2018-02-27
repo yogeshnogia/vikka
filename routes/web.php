@@ -29,3 +29,5 @@ Route::post('/posts/listings', 'PostsController@store');
 
 Route::get('/posts/listings', 'PostsController@listings');
 Route::get('/posts/listings/{listing}', 'PostsController@listing');
+
+Route::post('/posts/listings/{id}/comments', 'CommentsController@store');
