@@ -41,7 +41,11 @@
 							  	<h4>Comments</h4>
 							  	<ul class="list-group">
 							  		@foreach($listing->comments as $comment)
-							  			<li class="list-group-item"><b><span> {{ $comment->created_at->toDayDateTimeString() }} </span></b> &nbsp;{{ $comment->body }} </li>
+							  			<li class="list-group-item">
+							  				<p>{{ $comment->body }}</p> 
+							  				<p><b><span> {{ $comment->created_at->toDayDateTimeString() }} </span></b></p>
+							  				<p> {{ $comment->user->name }} </p>
+							  			</li>
 							  		@endforeach
 							  	</ul>
 							  </div>

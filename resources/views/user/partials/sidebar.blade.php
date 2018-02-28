@@ -12,7 +12,7 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active">
+                    <li class="">
                         <a href="/dashboard">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
@@ -25,17 +25,18 @@
                         </a>
                     </li> --}}
                     <li>
-                        <a href="/posts/create">
-                            <i class="material-icons">content_paste</i>
-                            <p>Posts Add</p>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/posts/listings">
                             <i class="material-icons">content_paste</i>
                             <p>View all the listing</p> 
                         </a>
                     </li>
+                    <li>
+                        <a href="/posts/create">
+                            <i class="material-icons">create</i>
+                            <p>Create Listing</p>
+                        </a>
+                    </li>
+                    
                     {{-- <li>
                         <a href="./typography.html">
                             <i class="material-icons">library_books</i>
@@ -79,7 +80,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Profile </a>
+                        <a class="navbar-brand" href="#"> {{ Auth::user()->name }} </a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">

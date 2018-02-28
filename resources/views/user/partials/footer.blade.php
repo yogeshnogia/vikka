@@ -23,4 +23,6 @@
     });
 </script>
 
+<script type="text/javascript" src="{{URL::asset('js/dashboard.js')}}"></script>
+
 </html>

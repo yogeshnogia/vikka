@@ -31,7 +31,18 @@ class PostsController extends Controller
         
         //dd(request()->all());
         //1. Save it to the database
-        Post::create(request(['company', 'model', 'address', 'city', 'country', 'postal', 'body']));
+        // Post::create(request(['user_id', 'company', 'model', 'address', 'city', 'country', 'postal', 'body']));
+
+        Post::create([
+            'user_id' => auth()->id(),
+            'company' => request('company'),
+            'model' => request('model'),
+            'address' => request('address'),
+            'city' => request('city'),
+            'country' => request('country'),
+            'postal' => request('postal'),
+            'body' => request('body')
+        ]);
         //here we used Post and created a new post using query builder
 
 
@@ -43,10 +54,8 @@ class PostsController extends Controller
 
     public function listings() {
         $i = 1;
-
         //$listings = \DB::table('posts')->latest()->get();
         $listings = Post::latest()->get();
-        
 
         return view('user.post.listings', compact(['listings', 'i']));
         //return $listings;

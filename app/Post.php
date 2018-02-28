@@ -7,19 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-	protected $fillable = ['company', 'model', 'address', 'city', 'country', 'postal', 'body'];
+	protected $fillable = ['user_id', 'company', 'model', 'address', 'city', 'country', 'postal', 'body'];
 
 	public function comments() {
 
 		return $this->hasMany(Comment::class);
 
 	}
+	
+
+	public function user() {		//$post->user->name
+
+		return $this->belongsTo(User::class);
+
+	}
+
 
 	public function addComment($body) {
 
 		Comment::create([
-			'body' => $body,
-			'post_id' => $this->id
+			'user_id' => auth()->id(),
+			'post_id' => $this->id,
+			'body' => $body
+			
 		]);
 
 		//with Eloquent we can do this

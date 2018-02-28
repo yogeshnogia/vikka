@@ -8,10 +8,19 @@
 	            <div class="col-md-12">
 	                <div class="card">
 	                    <div class="card-header" data-background-color="purple">
-	                        <h4 class="title">Edit Profile</h4>
-	                        <p class="category">Complete your profile</p>
+	                        <h4 class="title">All Listings</h4>
+	                        <p class="category"></p>
 	                    </div>
 	                    <div class="card-content">
+	                    	<div class="filter">
+	                    		<h4>Filter listing through month options</h4>
+	                    		<div class="year">
+	                    			<select>
+	                    				<option>2</option>
+	                    			</select>
+	                    		</div>
+	                    	</div>
+	                    	<br>
 	                    	<table class="table table-bordered table-responsive">
 							    <thead>
 							      <tr>
@@ -24,6 +33,7 @@
 							        <th>Postal</th>
 							        <th>Body</th>
 							        <th>Created At</th>
+							        <th>User</th>
 							      </tr>
 							    </thead>
 							    <tbody>
@@ -39,6 +49,7 @@
 						        	<td> {{ $listing->body }} </td>
 						        	<td> {{ $listing->created_at->toDayDateTimeString() }} </td>
 						        	{{-- <td>{{ $listing->created_at->setTimezone(Auth::user()->timezone)->toDayDateTimeString() }}</td> --}}
+						        	<td> {{ $listing->user->name }} </td>
 							      </tr>
 							      @endforeach
 							    </tbody>
