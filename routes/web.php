@@ -20,6 +20,9 @@ Route::post('/register', 'RegistrationController@store');
 
 Route::get('/login', 'SessionsController@create')->name('login');
 Route::post('/login', 'SessionsController@store');
+
+Route::get('verifyemail/{token}', 'RegistrationController@verify');
+
 Route::get('/logout', 'SessionsController@destroy');
 
 
