@@ -21,7 +21,11 @@ class SessionsController extends Controller
     public function store() {
 
     	//1. Attempt to authenticate the user
-    	if(! auth()->attempt(request(['email', 'password']))) {
+    	if(! auth()->attempt([
+            'email' => request('email'), 
+            'password' => request('password'),
+            'verified' => 1
+        ])) {
 
     		return back()->withErrors([
 

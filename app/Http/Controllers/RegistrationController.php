@@ -21,7 +21,8 @@ class RegistrationController extends Controller
 		$this->validate(request(), [
 
 			'name' => 'required',
-			'email' => 'required|email',
+			'username' => 'required|min:1|unique:users',
+			'email' => 'required|email|unique:users',
 			'password' => 'required|confirmed'
 
 		]);
@@ -30,9 +31,10 @@ class RegistrationController extends Controller
 		try {
 			$user = User::create(array(
 				'name' => request('name'),
+				'username' => request('username'),
 				'email' => request('email'),
 				'password' => bcrypt(request('password')),
-				'email_token' =>base64_encode(request('email'))
+				'email_token' => str_random(30)
 			));
 
 		} catch (Exception $exception){
@@ -41,7 +43,7 @@ class RegistrationController extends Controller
 			        // houston, we have a duplicate entry problem
 			        return back()->withErrors([
 
-		    			'message' => 'This email already exists'
+		    			'message' => 'This email or username already exists'
 
 		    		]);
 			    }
@@ -67,7 +69,7 @@ class RegistrationController extends Controller
 		$user = User::where('email_token',$token)->first();
 		$user->verified = 1;
 		if($user->save()){
-		return view('guest.registration.emailconfirm',['user'=>$user]);
+			return view('guest.registration.emailconfirm',['user'=>$user]);
 		}
 	}
 

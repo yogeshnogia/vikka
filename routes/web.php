@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'StaticController@index')->name('home');
+Route::get('/home', 'StaticController@index');
 Route::get('/time', 'StaticController@time');
 
 
@@ -21,7 +22,11 @@ Route::post('/register', 'RegistrationController@store');
 Route::get('/login', 'SessionsController@create')->name('login');
 Route::post('/login', 'SessionsController@store');
 
-Route::get('verifyemail/{token}', 'RegistrationController@verify');
+Route::get('/verifyemail/{token}', 'RegistrationController@verify');
+// Route::get('/register/verify/{confirmationCode}', [
+// 	'as'=> 'confirmation_path',
+// 	'uses' => 'RegistrationController@verify'
+// ]);
 
 Route::get('/logout', 'SessionsController@destroy');
 
