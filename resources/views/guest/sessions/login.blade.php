@@ -19,6 +19,12 @@
 			      </div>
 			    </div>
 			    <div class="form-group row">
+			      <label for="password" class="col-sm-2 col-form-label"></label>
+			      <div class="col-sm-10">
+			        <a href="/forgot-password">Forgot Password?</a>
+			      </div>
+			    </div>
+			    <div class="form-group row">
 			      <div class="offset-sm-2 col-sm-10">
 			        <button type="submit" class="btn btn-primary" id="register">Login</button>
 			      </div>

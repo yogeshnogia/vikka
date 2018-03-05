@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\User;	// we are using User model for query,migration & all the methods associated with User model
+Use DB;
 use App\Mail\Register;
 use Illuminate\Auth\Events\Registered;
 use App\Jobs\SendVerificationEmail;
+use App\Jobs\ResetPasswordJob;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Input;
+use Log;
+use Mail;
 
 class RegistrationController extends Controller
 {
@@ -72,5 +77,47 @@ class RegistrationController extends Controller
 			return view('guest.registration.emailconfirm',['user'=>$user]);
 		}
 	}
+
+
+	public function forgotPassword() {
+		return view('user.forgot.forgot-password');
+	}
+
+
+	public function resetPassword() {
+
+		if (User::where('email', '=', Input::get('email'))->exists()) {
+		   
+			$user = User::create(array(
+				'email' => request('email'),
+				'token' => str_random(30),
+				'created_at' => now()
+			));
+
+			dispatch(new ResetPasswordJob($user));
+			return view('user.forgot.linksent');
+			 // dd($random_string);
+			//Basic Method
+			// Log::info("Request cycle without Queues started");
+	  //       Mail::send('emails.reset', ['data'=>$random_string], function ($message) {
+
+	  //           $message->from('me@gmail.com', 'Christian Nwmaba');
+
+	  //           $message->to('chris@scotch.io');
+
+	  //       });
+	  //       Log::info("Request cycle without Queues finished");
+	        //return view('user.forgot.linksent');
+
+		}		
+	}
+
+	public function resetPasswordTrue($token) {
+
+		return view('user.forgot.resetform');
+
+	}
+
+
 
 }

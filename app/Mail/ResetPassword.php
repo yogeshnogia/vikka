@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Mail;
-use App\User;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Signup extends Mailable
+class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,11 +18,9 @@ class Signup extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
-        //
         $this->user = $user;
-
     }
 
     /**
@@ -32,6 +30,10 @@ class Signup extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome', compact('user'));
+        return $this->markdown('emails.resetpassword')->with([
+
+            'token' => $this->user->token
+
+        ]);
     }
 }
