@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-
 use Mail;
 use App\Mail\EmailVerification;
 use Illuminate\Bus\Queueable;

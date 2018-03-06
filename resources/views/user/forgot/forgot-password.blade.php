@@ -6,7 +6,7 @@
   		
   		<div class="col-sm-8">
   			<h3>Forgot Password? Enter your email id here</h3>
-  			<form method="POST" action="/password-reset">
+  			<form method="POST" action="/forgot-password">
   				{{ csrf_field() }} 
   				
 			    <div class="form-group row">

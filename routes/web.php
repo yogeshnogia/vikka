@@ -28,9 +28,10 @@ Route::get('/verifyemail/{token}', 'RegistrationController@verify');
 // 	'uses' => 'RegistrationController@verify'
 // ]);
 
-Route::get('/forgot-password', 'RegistrationController@forgotPassword');
-Route::post('/password-reset', 'RegistrationController@resetPassword');
-Route::get('/password-reset{token}', 'RegistrationController@resetPasswordTrue');
+Route::get('/forgot-password', 'ResetPasswordController@forgotPassword');
+Route::post('/forgot-password', 'ResetPasswordController@resetPassword');
+Route::get('/password-reset/{token}', 'ResetPasswordController@resetPasswordTrue');
+Route::post('/password-reset/{token}', 'ResetPasswordController@resetPasswordSubmit');
 
 
 
