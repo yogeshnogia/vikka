@@ -28,6 +28,13 @@ Route::get('/verifyemail/{token}', 'RegistrationController@verify');
 // 	'uses' => 'RegistrationController@verify'
 // ]);
 
+Route::get('/forgot-password', 'ResetPasswordController@forgotPassword');
+Route::post('/forgot-password', 'ResetPasswordController@resetPassword');
+Route::get('/password-reset/{token}', 'ResetPasswordController@resetPasswordTrue');
+Route::post('/password-reset/{token}', 'ResetPasswordController@resetPasswordSubmit');
+
+
+
 Route::get('/logout', 'SessionsController@destroy');
 
 

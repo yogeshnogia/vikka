@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\User;	// we are using User model for query,migration & all the methods associated with User model
+Use DB;
 use App\Mail\Register;
 use Illuminate\Auth\Events\Registered;
 use App\Jobs\SendVerificationEmail;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Input;
+use Log;
+use Mail;
 
 class RegistrationController extends Controller
 {
@@ -72,5 +76,7 @@ class RegistrationController extends Controller
 			return view('guest.registration.emailconfirm',['user'=>$user]);
 		}
 	}
+
+
 
 }
