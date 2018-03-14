@@ -53,7 +53,7 @@ class RegistrationController extends Controller
 			    }
 			}
 
-
+		//dd($user);
 		dispatch(new SendVerificationEmail($user));
 		return view('guest.registration.verification');
 

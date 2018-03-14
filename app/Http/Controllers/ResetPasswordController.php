@@ -28,13 +28,13 @@ class ResetPasswordController extends Controller
 	public function resetPassword() {
 
 		$e = User::where('email', '=', Input::get('email'))->exists();
-		$user = new ResetPassword;
+		//$reset = new ResetPassword;
 
 		if ($e) {
 
 			$random_string = str_random(30);
 
-			$user::create(array(
+			$reset = ResetPassword::create(array(
 				'email' => request('email'),
 				'token' => $random_string,
 				'created_at' => Carbon::now()
@@ -42,20 +42,20 @@ class ResetPasswordController extends Controller
 
 			$email_id = Input::get('email');
 
-			
-			// dispatch(new ResetPasswordJob($user));
-			// return view('user.forgot.linksent');
+			//dd($reset);			
+			dispatch(new ResetPasswordJob($reset));
+			return view('user.forgot.linksent');
 			
 			 // dd($random_string);
 			// Basic Method
-			Log::info("Request cycle without Queues started");
-	        Mail::send('emails.resetpassword', ['data'=>$random_string], function ($message) {
-	        		$message->from('yogeshnogia@gmail.com', 'Yogesh Nogia');
-	        		$message->subject('Password Reset Link at Vikka Project');
-	            	$message->to(Input::get('email'));
-	        });
-	        Log::info("Request cycle without Queues finished");
-	        return view('user.forgot.linksent');
+			// Log::info("Request cycle without Queues started");
+	  //       Mail::send('emails.resetpassword', ['data'=>$random_string], function ($message) {
+	  //       		$message->from('yogeshnogia@gmail.com', 'Yogesh Nogia');
+	  //       		$message->subject('Password Reset Link at Vikka Project');
+	  //           	$message->to(Input::get('email'));
+	  //       });
+	  //       Log::info("Request cycle without Queues finished");
+	  //       return view('user.forgot.linksent');
 
 		}	
 
