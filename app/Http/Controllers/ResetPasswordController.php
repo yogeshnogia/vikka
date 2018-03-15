@@ -34,7 +34,7 @@ class ResetPasswordController extends Controller
 
 			$random_string = str_random(30);
 
-			$reset = ResetPassword::create(array(
+			$user = ResetPassword::create(array(
 				'email' => request('email'),
 				'token' => $random_string,
 				'created_at' => Carbon::now()
@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
 			$email_id = Input::get('email');
 
 			//dd($reset);			
-			dispatch(new ResetPasswordJob($reset));
+			dispatch(new ResetPasswordJob($user));
 			return view('user.forgot.linksent');
 			
 			 // dd($random_string);

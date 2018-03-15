@@ -14,16 +14,16 @@ class ResetPasswordJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $reset;
+    protected $user;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($reset)
+    public function __construct($user)
     {
-        $this->reset = $reset;
+        $this->user = $user;
     }
 
     /**
@@ -33,7 +33,7 @@ class ResetPasswordJob implements ShouldQueue
      */
     public function handle()
     {
-        $email = new ResetPasswordEmail($this->reset);
-        Mail::to($this->reset->email)->send($email);
+        $email = new ResetPasswordEmail($this->user);
+        Mail::to($this->user->email)->send($email);
     }
 }
